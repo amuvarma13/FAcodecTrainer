@@ -46,7 +46,7 @@ model_params:
     sr: 24000
 
 loss_params:
-  base_lr: 0.0001
+  base_lr: 0.0000
   discriminator_iter_start: 2000
   lambda_spk: 1.0
   lambda_mel: 45
