@@ -59,7 +59,6 @@ def main(args):
 
     batch_size = config.get('batch_size', 1)
     batch_length = config.get('batch_length', 120)
-    print("number of processes", accelerator.num_processes)
     device = accelerator.device if accelerator.num_processes > 0 else torch.device('cpu')
     print("device being used is", device)
 
