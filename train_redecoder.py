@@ -63,7 +63,7 @@ def main(args):
     device = accelerator.device# if accelerator.num_processes > 1 else torch.device('cpu')
 
     epochs = config.get('epochs', 200)
-    log_interval = config.get('log_interval', 10)
+    log_interval = config.get('log_interval', 1)
     saving_epoch = config.get('save_freq', 2)
     save_interval = config.get('save_interval', 1000)
 
