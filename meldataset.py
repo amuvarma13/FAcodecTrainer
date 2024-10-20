@@ -74,8 +74,8 @@ class PseudoDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         # replace this with your own data loading
-        # wave, sr = librosa.load(self.data_list[idx], sr=self.sr)
-        wave = np.random.randn(self.sr * random.randint(*self.duration_range))
+        wave, sr = librosa.load(self.data_list[idx], sr=self.sr)
+        # wave = np.random.randn(self.sr * random.randint(*self.duration_range))
         wave = wave / np.max(np.abs(wave))
         mel = preprocess(wave).squeeze(0)
         wave = torch.from_numpy(wave).float()
