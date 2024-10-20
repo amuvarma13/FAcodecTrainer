@@ -317,6 +317,7 @@ def main(args):
 
             optimizer.zero_grad()
             accelerator.backward(loss_d)
+            print("***", loss_d)
             grad_norm_d = torch.nn.utils.clip_grad_norm_(model.discriminator.parameters(), 10.0)
             optimizer.step('discriminator')
             optimizer.scheduler(key='discriminator')
