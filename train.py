@@ -447,7 +447,7 @@ def main(args):
                     pcr_pred_wave = model.decoder(quantized[0] + quantized[1] + quantized[2])
                     full_pred_wave = model.decoder(z)
                     x = quantized[0] + quantized[1] + quantized[2]
-                    style2 = model.quantizer.module.timbre_linear(timbre2).unsqueeze(2)  # (B, 2d, 1)
+                    style2 = model.quantizer.timbre_linear(timbre2).unsqueeze(2)  # (B, 2d, 1)
                     gamma, beta = style2.chunk(2, 1)  # (B, d, 1)
                     x = x.transpose(1, 2)
                     x = model.quantizer.module.timbre_norm(x)
