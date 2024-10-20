@@ -57,7 +57,7 @@ def main(args):
     file_handler.setFormatter(logging.Formatter('%(levelname)s:%(asctime)s: %(message)s'))
     logger.logger.addHandler(file_handler)
 
-    batch_size = config.get('batch_size', 10)
+    batch_size = config.get('batch_size', 1)
     batch_length = config.get('batch_length', 120)
     device = accelerator.device if accelerator.num_processes > 1 else torch.device('cpu')
 
@@ -169,6 +169,7 @@ def main(args):
         _ = [model[key].train() for key in model]
         last_time = time.time()
         for i, batch in enumerate(train_dataloader):
+            print("on step", i)
             optimizer.zero_grad()
             # torch.save(batch, f"latest_batch_{device}.pt")
             # train time count start
