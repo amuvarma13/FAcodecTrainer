@@ -39,6 +39,7 @@ def save_audio_to_wav(dataset: DatasetDict, output_folder: str):
         if isinstance(audio, dict):
             audio_array = audio['array']
             sampling_rate = audio['sampling_rate']
+            print("audio sampling rate", sampling_rate)
         else:
             # If it's not a dictionary, assume it's already an array
             # You might need to adjust this part based on your actual data structure
