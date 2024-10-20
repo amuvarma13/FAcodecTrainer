@@ -123,7 +123,7 @@ def main(args):
         speaker_model.eval()
     scheduler_params = {
         "warmup_steps": 200,
-        "base_lr": 0.000,
+        "base_lr": 0.0000001,
     }
 
     model_params = recursive_munch(config['model_params'])
