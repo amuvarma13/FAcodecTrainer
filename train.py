@@ -484,6 +484,7 @@ def main(args):
                     # remove all except last 5
                     for cp in checkpoints[:-5]:
                         os.remove(cp)
+            print('Iter:', iters)
             iters = iters + 1
 
 
