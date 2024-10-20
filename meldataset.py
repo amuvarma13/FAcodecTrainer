@@ -55,7 +55,7 @@ def list_audio_files(path):
     return audio_files
 
 audio_files = list_audio_files("audiofiles")
-print("audiofiles:", audio_files)
+
 
 
 class PseudoDataset(torch.utils.data.Dataset):
@@ -64,7 +64,7 @@ class PseudoDataset(torch.utils.data.Dataset):
                  range=(1, 30), # length of the audio duration in seconds
                  ):
 
-        self.data_list = [] # read your list path here
+        self.data_list = audio_files # read your list path here
         self.sr = sr
         self.duration_range = range
 
