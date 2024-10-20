@@ -41,7 +41,6 @@ def save_audio_to_wav(dataset: DatasetDict, output_folder: str):
         audio_array = audio['array']
         sampling_rate = audio['sampling_rate']
         audio_array = librosa.resample(audio_array, orig_sr=sampling_rate, target_sr=24000)
-        print("audio sampling rate", sampling_rate)
 
         
         # Check if the audio_array is not empty and contains actual samples
