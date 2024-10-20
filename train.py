@@ -163,6 +163,9 @@ def main(args):
     ).to(device)
     l1_criterion = L1Loss().to(device)
 
+    num_batches = len(train_dataloader)
+    print(f"Number of batches in train_dataloader: {num_batches}")
+    batch_start_time = time.time() 
     for epoch in range(start_epoch, epochs):
         start_time = time.time()
         # train_dataloader.set_epoch(epoch)
@@ -174,6 +177,9 @@ def main(args):
             # torch.save(batch, f"latest_batch_{device}.pt")
             # train time count start
             train_start_time = time.time()
+            print("batch train time", time.time() - batch_start_time)
+            batch_start_time = time.time() 
+
 
             batch = [b.to(device, non_blocking=True) for b in batch]
             waves, mels, wave_lengths, mel_input_length = batch
