@@ -19,7 +19,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def load_model():
 
     print("No checkpoint path or config path provided. Loading from huggingface model hub")
-    ckpt_path, config_path = load_custom_model_from_hf("Plachta/FAcodec")
+    # ckpt_path, config_path = load_custom_model_from_hf("Plachta/FAcodec")
+    ckpt_path = "Models/run_timbre_norm_ctc_titanet/FAcodec_epoch_00000_step_00000.pth"
+    config_path = "Models/run_timbre_norm_ctc_titanet/config.yml"
 
     config = yaml.safe_load(open(config_path))
     model_params = recursive_munch(config['model_params'])

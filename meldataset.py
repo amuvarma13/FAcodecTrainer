@@ -69,7 +69,7 @@ class PseudoDataset(torch.utils.data.Dataset):
         self.duration_range = range
 
     def __len__(self):
-        # return len(self.data_list)
+        return len(self.data_list)
         return 100 # return a fixed number for testing
 
     def __getitem__(self, idx):
