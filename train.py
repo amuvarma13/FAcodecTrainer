@@ -20,6 +20,7 @@ import time
 from accelerate import Accelerator
 from accelerate.utils import LoggerType
 from accelerate import DistributedDataParallelKwargs
+from hf_utils import load_custom_model_from_hf
 
 from torch.utils.tensorboard import SummaryWriter
 import torchaudio
