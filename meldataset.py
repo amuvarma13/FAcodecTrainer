@@ -46,6 +46,17 @@ def preprocess(wave):
     mel_tensor = (torch.log(1e-5 + mel_tensor.unsqueeze(0)) - mean) / std
     return mel_tensor
 
+def list_audio_files(path):
+    audio_files = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if file.endswith(".wav"):
+                audio_files.append(os.path.join(root, file))
+    return audio_files
+
+audio_files = list_audio_files("audiofiles")
+print("audiofiles:", audio_files)
+
 
 class PseudoDataset(torch.utils.data.Dataset):
     def __init__(self,
