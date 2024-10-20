@@ -450,7 +450,7 @@ def main(args):
                     style2 = model.quantizer.timbre_linear(timbre2).unsqueeze(2)  # (B, 2d, 1)
                     gamma, beta = style2.chunk(2, 1)  # (B, d, 1)
                     x = x.transpose(1, 2)
-                    x = model.quantizer.module.timbre_norm(x)
+                    x = model.quantizer.timbre_norm(x)
                     x = x.transpose(1, 2)
                     x = x * gamma + beta
                     vc_pred_wave = model.decoder(x) 
