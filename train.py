@@ -39,6 +39,26 @@ import glob
 logger = get_logger(__name__, log_level="INFO")
 # torch.autograd.set_detect_anomaly(True)
 
+def load_model(device):
+
+    print("No checkpoint path or config path provided. Loading from huggingface model hub")
+    ckpt_path, config_path = load_custom_model_from_hf("Plachta/FAcodec")
+
+    config = yaml.safe_load(open(config_path))
+    model_params = recursive_munch(config['model_params'])
+    model = build_model(model_params)
+
+    ckpt_params = torch.load(ckpt_path, map_location="cpu")
+    ckpt_params = ckpt_params['net'] if 'net' in ckpt_params else ckpt_params # adapt to format of self-trained checkpoints
+
+    for key in ckpt_params:
+        model[key].load_state_dict(ckpt_params[key])
+
+    _ = [model[key].eval() for key in model]
+    _ = [model[key].to(device) for key in model]
+
+    return model
+
 def main(args):
     config_path = args.config_path
     config = yaml.safe_load(open(config_path))
@@ -107,6 +127,7 @@ def main(args):
 
     model_params = recursive_munch(config['model_params'])
     model = build_model(model_params)
+    model = load_model(device)
 
     for k in model:
         model[k] = accelerator.prepare(model[k])
