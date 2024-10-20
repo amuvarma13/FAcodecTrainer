@@ -84,8 +84,8 @@ def main(args):
 
     os.makedirs("reconstructed", exist_ok=True)
     source_name = source.split("/")[-1].split(".")[0]
-    torchaudio.save(f"reconstructed/{source_name}vm.wav", full_pred_wave[0].cpu(), 24000)
-    torchaudio.save(f"reconstructed/{source_name}vm2.wav", full_pred_wave2[0].cpu(), 24000)
+    torchaudio.save(f"reconstructed/{source_name}vmm.wav", full_pred_wave[0].cpu(), 24000)
+    torchaudio.save(f"reconstructed/{source_name}vmm2.wav", full_pred_wave2[0].cpu(), 24000)
 
 
 if __name__ == "__main__":
