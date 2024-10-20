@@ -453,7 +453,7 @@ def main(args):
                     x = model.quantizer.module.timbre_norm(x)
                     x = x.transpose(1, 2)
                     x = x * gamma + beta
-                    vc_pred_wave = model.decoder(x)
+                    vc_pred_wave = model.decoder(x) 
                     writer.add_audio('partial/pred_audio_p', p_pred_wave[0], iters, sample_rate=sr)
                     writer.add_audio('partial/pred_audio_c', c_pred_wave[0], iters, sample_rate=sr)
                     writer.add_audio('partial/pred_audio_r', r_pred_wave[0], iters, sample_rate=sr)
